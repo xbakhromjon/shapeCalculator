@@ -20,12 +20,12 @@ public class ShapeCalculatorController {
     private final ShapeCalculatorService service;
 
     @PostMapping(path = "/perimeter")
-    public ResponseEntity<?> findPerimeter(@RequestBody ShapeRequestDTO shapeRequestDTO) {
+    public ResponseEntity<Double> findPerimeter(@RequestBody ShapeRequestDTO shapeRequestDTO) {
         return service.findPerimeter(shapeRequestDTO);
     }
 
     @PostMapping(path = "/area")
-    public ResponseEntity<?> findArea(@RequestBody ShapeRequestDTO shapeRequestDTO) {
+    public ResponseEntity<Double> findArea(@RequestBody ShapeRequestDTO shapeRequestDTO) {
         return service.findArea(shapeRequestDTO);
     }
 }

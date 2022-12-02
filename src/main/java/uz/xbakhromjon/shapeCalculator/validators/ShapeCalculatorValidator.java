@@ -22,39 +22,15 @@ public class ShapeCalculatorValidator {
         checkFieldsForCircle(requestDTO);
     }
 
-    private void checkFieldsForTriangle(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
-            checkFieldsForCube(requestDTO);
+    private void checkFieldsForCircle(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.CIRCLE.name())) {
+            checkFieldsForRectangle(requestDTO);
         }
-        if (requestDTO.getA() == null) {
-            throw new ValidationException("a required for Triangle");
+        if (requestDTO.getRadius() == null) {
+            throw new ValidationException("radius required for Circle");
         }
-        if (requestDTO.getB() == null) {
-            throw new ValidationException("b required for Triangle");
-        }
-        if (requestDTO.getC() == null) {
-            throw new ValidationException("c required for Triangle");
-        }
-        if (requestDTO.getA() <= 0) {
-            throw new ValidationException("a cannot be negative or zero for Triangle");
-        }
-        if (requestDTO.getB() <= 0) {
-            throw new ValidationException("b cannot be negative or zero for Triangle");
-        }
-        if (requestDTO.getC() <= 0) {
-            throw new ValidationException("c cannot be negative or zero for Triangle");
-        }
-
-        checkTriangleCorrect(requestDTO);
-    }
-
-    private void checkTriangleCorrect(ShapeRequestDTO requestDTO) {
-        double a = requestDTO.getA();
-        double b = requestDTO.getB();
-        double c = requestDTO.getC();
-
-        if (a + b <= c || a + c <= b || b + c <= a) {
-            throw new ValidationException("Triangle cannot exists these sides");
+        if (requestDTO.getRadius() <= 0) {
+            throw new ValidationException("radius cannot be negative or zero for Circle");
         }
     }
 
@@ -88,15 +64,39 @@ public class ShapeCalculatorValidator {
         }
     }
 
-    private void checkFieldsForCircle(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.CIRCLE.name())) {
-            checkFieldsForRectangle(requestDTO);
+    private void checkFieldsForTriangle(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
+            checkFieldsForCube(requestDTO);
         }
-        if (requestDTO.getRadius() == null) {
-            throw new ValidationException("radius required for Circle");
+        if (requestDTO.getA() == null) {
+            throw new ValidationException("a required for Triangle");
         }
-        if (requestDTO.getRadius() <= 0) {
-            throw new ValidationException("radius cannot be negative or zero for Circle");
+        if (requestDTO.getB() == null) {
+            throw new ValidationException("b required for Triangle");
+        }
+        if (requestDTO.getC() == null) {
+            throw new ValidationException("c required for Triangle");
+        }
+        if (requestDTO.getA() <= 0) {
+            throw new ValidationException("a cannot be negative or zero for Triangle");
+        }
+        if (requestDTO.getB() <= 0) {
+            throw new ValidationException("b cannot be negative or zero for Triangle");
+        }
+        if (requestDTO.getC() <= 0) {
+            throw new ValidationException("c cannot be negative or zero for Triangle");
+        }
+
+        checkTriangleCorrect(requestDTO);
+    }
+
+    private void checkTriangleCorrect(ShapeRequestDTO requestDTO) {
+        double a = requestDTO.getA();
+        double b = requestDTO.getB();
+        double c = requestDTO.getC();
+
+        if (a + b <= c || a + c <= b || b + c <= a) {
+            throw new ValidationException("Triangle cannot exists these sides");
         }
     }
 
@@ -136,4 +136,5 @@ public class ShapeCalculatorValidator {
             throw new ValidationException("length cannot be negative or zero for Parallelepiped");
         }
     }
+
 }

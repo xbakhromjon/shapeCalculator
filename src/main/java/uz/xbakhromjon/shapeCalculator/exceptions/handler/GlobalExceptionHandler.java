@@ -14,14 +14,13 @@ import uz.xbakhromjon.shapeCalculator.exceptions.ValidationException;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UniversalException.class)
-    public ResponseEntity<?> UniversalExceptionHandler(UniversalException exception, WebRequest webRequest) {
+    public ResponseEntity<?> UniversalExceptionHandler(UniversalException exception) {
         return new ResponseEntity<>(exception.getMessage(), exception.getStatus());
     }
 
     @ExceptionHandler(ValidationException.class)
-    public ResponseEntity<?> ValidationExceptionHandler(ValidationException exception, WebRequest webRequest) {
+    public ResponseEntity<?> ValidationExceptionHandler(ValidationException exception) {
         return new ResponseEntity<>(exception.getMessage(), exception.getStatus());
     }
-
 
 }

@@ -12,12 +12,42 @@ import uz.xbakhromjon.shapeCalculator.shapes.*;
 public class ShapeCalculatorMapper {
 
 
+    public Base2DShape toShape(ShapeRequestDTO requestDTO) {
+        if (requestDTO == null) {
+            return null;
+        }
+        return toCircle(requestDTO);
+    }
+
+
     public Base2DShape toCircle(ShapeRequestDTO requestDTO) {
         if (requestDTO.getShapeCode().equals(EShape.CIRCLE.name())) {
             return new Circle(requestDTO.getRadius());
         }
+        return toRectangle(requestDTO);
+    }
+
+    public Base2DShape toRectangle(ShapeRequestDTO requestDTO) {
+        if (requestDTO.getShapeCode().equals(EShape.RECTANGLE.name())) {
+            return new Rectangle(requestDTO.getWidth(), requestDTO.getHeight());
+        }
+        return toSquare(requestDTO);
+    }
+
+    public Base2DShape toSquare(ShapeRequestDTO requestDTO) {
+        if (requestDTO.getShapeCode().equals(EShape.SQUARE.name())) {
+            return new Square(requestDTO.getSide());
+        }
+        return toTriangle(requestDTO);
+    }
+
+    public Base2DShape toTriangle(ShapeRequestDTO requestDTO) {
+        if (requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
+            return new Triangle(requestDTO.getA(), requestDTO.getB(), requestDTO.getC());
+        }
         return toCube(requestDTO);
     }
+
 
     public Base2DShape toCube(ShapeRequestDTO requestDTO) {
         if (requestDTO.getShapeCode().equals(EShape.CUBE.name())) {
@@ -33,31 +63,9 @@ public class ShapeCalculatorMapper {
         return null;
     }
 
-    public Base2DShape toRectangle(ShapeRequestDTO requestDTO) {
-        if (requestDTO.getShapeCode().equals(EShape.RECTANGLE.name())) {
-            return new Rectangle(requestDTO.getWidth(), requestDTO.getHeight());
-        }
-        return toCircle(requestDTO);
-    }
 
-    public Base2DShape toSquare(ShapeRequestDTO requestDTO) {
-        if (requestDTO.getShapeCode().equals(EShape.SQUARE.name())) {
-            return new Square(requestDTO.getSide());
-        }
-        return toTriangle(requestDTO);
-    }
 
-    public Base2DShape toTriangle(ShapeRequestDTO requestDTO) {
-        if (requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
-            return new Triangle(requestDTO.getA(), requestDTO.getB(), requestDTO.getC());
-        }
-        return toRectangle(requestDTO);
-    }
 
-    public Base2DShape toShape(ShapeRequestDTO requestDTO) {
-        if (requestDTO == null) {
-            return null;
-        }
-        return toSquare(requestDTO);
-    }
+
+
 }

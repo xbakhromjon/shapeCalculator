@@ -18,17 +18,17 @@ public class ShapeCalculatorService {
     private final ShapeCalculatorValidator validator;
     private final ShapeCalculatorMapper mapper;
 
-    public ResponseEntity<?> findArea(ShapeRequestDTO requestDTO) {
-        validator.validate(requestDTO);
-        Base2DShape shape = mapper.toShape(requestDTO);
-        double result = shape.getArea();
-        return ResponseEntity.ok(result);
-    }
-
-    public ResponseEntity<?> findPerimeter(ShapeRequestDTO requestDTO) {
+    public ResponseEntity<Double> findPerimeter(ShapeRequestDTO requestDTO) {
         validator.validate(requestDTO);
         Base2DShape shape = mapper.toShape(requestDTO);
         double result = shape.getPerimeter();
+        return ResponseEntity.ok(result);
+    }
+
+    public ResponseEntity<Double> findArea(ShapeRequestDTO requestDTO) {
+        validator.validate(requestDTO);
+        Base2DShape shape = mapper.toShape(requestDTO);
+        double result = shape.getArea();
         return ResponseEntity.ok(result);
     }
 }
