@@ -15,20 +15,17 @@ public class ShapeCalculatorValidator {
         if (requestDTO == null) {
             throw new ValidationException("RequestBody cannot be null");
         }
-        if (requestDTO.getShapeCode().equals(EShape.CIRCLE.name())) {
-            checkFieldsForCircle(requestDTO);
-        } else if (requestDTO.getShapeCode().equals(EShape.SQUARE.name())) {
-            checkFieldsForSquare(requestDTO);
-        } else if (requestDTO.getShapeCode().equals(EShape.RECTANGLE.name())) {
-            checkFieldsForRectangle(requestDTO);
-        } else if (requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
-            checkFieldsForTriangle(requestDTO);
-        } else {
-            throw new ValidationException("Shape not acceptable");
-        }
+        checkFields(requestDTO);
+    }
+
+    public void checkFields(ShapeRequestDTO requestDTO) {
+        checkFieldsForCircle(requestDTO);
     }
 
     private void checkFieldsForTriangle(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
+            throw new ValidationException("Shape not acceptable");
+        }
         if (requestDTO.getA() == null) {
             throw new ValidationException("a required for Triangle");
         }
@@ -62,6 +59,9 @@ public class ShapeCalculatorValidator {
     }
 
     private void checkFieldsForRectangle(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.RECTANGLE.name())) {
+            checkFieldsForSquare(requestDTO);
+        }
         if (requestDTO.getWidth() == null) {
             throw new ValidationException("width required for Rectangle");
         }
@@ -77,6 +77,9 @@ public class ShapeCalculatorValidator {
     }
 
     private void checkFieldsForSquare(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.SQUARE.name())) {
+            checkFieldsForTriangle(requestDTO);
+        }
         if (requestDTO.getSide() == null) {
             throw new ValidationException("side required for Square");
         }
@@ -86,6 +89,9 @@ public class ShapeCalculatorValidator {
     }
 
     private void checkFieldsForCircle(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.CIRCLE.name())) {
+            checkFieldsForRectangle(requestDTO);
+        }
         if (requestDTO.getRadius() == null) {
             throw new ValidationException("radius required for Circle");
         }
