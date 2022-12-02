@@ -7,17 +7,24 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Rectangle implements Base2DShape {
+public class Parallelepiped implements ThreeDimensionalShape,  Base2DShape {
     private Double width;
     private Double height;
+    private Double length;
 
     @Override
     public Double getArea() {
-        return width * height;
+        return 2 * (width * height + width * length + height * length);
     }
 
     @Override
     public Double getPerimeter() {
-        return 2 * (width + height);
+        return 4 * (width + height + length);
+    }
+
+
+    @Override
+    public Double getVolume() {
+        return width * height * length;
     }
 }

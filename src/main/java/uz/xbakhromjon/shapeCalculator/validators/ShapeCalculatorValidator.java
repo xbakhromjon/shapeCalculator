@@ -24,7 +24,7 @@ public class ShapeCalculatorValidator {
 
     private void checkFieldsForTriangle(ShapeRequestDTO requestDTO) {
         if (!requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
-            throw new ValidationException("Shape not acceptable");
+            checkFieldsForCube(requestDTO);
         }
         if (requestDTO.getA() == null) {
             throw new ValidationException("a required for Triangle");
@@ -97,6 +97,43 @@ public class ShapeCalculatorValidator {
         }
         if (requestDTO.getRadius() <= 0) {
             throw new ValidationException("radius cannot be negative or zero for Circle");
+        }
+    }
+
+    private void checkFieldsForCube(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.CUBE.name())) {
+            checkFieldsForParallelepiped(requestDTO);
+        }
+        if (requestDTO.getSide() == null) {
+            throw new ValidationException("side required for Cube");
+        }
+        if (requestDTO.getSide() <= 0) {
+            throw new ValidationException("side cannot be negative or zero for Cube");
+        }
+    }
+
+    private void checkFieldsForParallelepiped(ShapeRequestDTO requestDTO) {
+        if (!requestDTO.getShapeCode().equals(EShape.PARALLELEPIPED.name())) {
+            throw new ValidationException("Shape not acceptable");
+        }
+        if (requestDTO.getWidth() == null) {
+            throw new ValidationException("width required for Parallelepiped");
+        }
+        if (requestDTO.getHeight() == null) {
+            throw new ValidationException("height required for Parallelepiped");
+        }
+        if (requestDTO.getLength() == null) {
+            throw new ValidationException("length required for Parallelepiped");
+        }
+
+        if (requestDTO.getWidth() <= 0) {
+            throw new ValidationException("width cannot be negative or zero for Parallelepiped");
+        }
+        if (requestDTO.getHeight() <= 0) {
+            throw new ValidationException("height cannot be negative or zero for Parallelepiped");
+        }
+        if (requestDTO.getLength() <= 0) {
+            throw new ValidationException("length cannot be negative or zero for Parallelepiped");
         }
     }
 }

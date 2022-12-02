@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Circle implements BaseShape {
+public class Circle implements Base2DShape {
     private Double radius;
 
     @Override

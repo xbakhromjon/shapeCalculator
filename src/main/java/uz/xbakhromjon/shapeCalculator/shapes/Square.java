@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Square implements BaseShape {
+public class Square implements Base2DShape {
     private Double side;
 
     @Override

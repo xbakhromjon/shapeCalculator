@@ -21,11 +21,15 @@ public class ShapeRequestDTO {
     private Double width;
     private Double height;
 
-    // square
+    // square, cube
     private Double side;
 
     // triangle
     private Double a;
     private Double b;
     private Double c;
+
+    // parallelepiped
+    // width, height above.
+    private Double length;
 }

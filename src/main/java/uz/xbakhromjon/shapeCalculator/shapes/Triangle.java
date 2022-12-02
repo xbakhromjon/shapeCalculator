@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @AllArgsConstructor
-public class Triangle implements BaseShape {
+public class Triangle implements Base2DShape {
     private Double a;
     private Double b;
     private Double c;

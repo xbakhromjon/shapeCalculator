@@ -12,5 +12,7 @@ public enum EShape {
     CIRCLE,
     RECTANGLE,
     SQUARE,
-    TRIANGLE;
+    TRIANGLE,
+    CUBE,
+    PARALLELEPIPED;
 }
