@@ -1,4 +1,4 @@
-package uz.xbakhromjon.shapeCalculator.shapes;
+package uz.xbakhromjon.shapeCalculator.shapes.base;
 
 public interface ThreeDimensionalShape {
     Double getVolume();

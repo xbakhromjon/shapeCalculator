@@ -1,8 +1,7 @@
 package uz.xbakhromjon.shapeCalculator.validators;
 
 import org.springframework.stereotype.Component;
-import uz.xbakhromjon.shapeCalculator.dtos.ShapeRequestDTO;
-import uz.xbakhromjon.shapeCalculator.enums.EShape;
+import uz.xbakhromjon.shapeCalculator.dtos.*;
 import uz.xbakhromjon.shapeCalculator.exceptions.ValidationException;
 
 /**
@@ -11,21 +10,7 @@ import uz.xbakhromjon.shapeCalculator.exceptions.ValidationException;
 @Component
 public class ShapeCalculatorValidator {
 
-    public void validate(ShapeRequestDTO requestDTO) {
-        if (requestDTO == null) {
-            throw new ValidationException("RequestBody cannot be null");
-        }
-        checkFields(requestDTO);
-    }
-
-    public void checkFields(ShapeRequestDTO requestDTO) {
-        checkFieldsForCircle(requestDTO);
-    }
-
-    private void checkFieldsForCircle(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.CIRCLE.name())) {
-            checkFieldsForRectangle(requestDTO);
-        }
+    public void validateForCircle(CircleRequestDTO requestDTO) {
         if (requestDTO.getRadius() == null) {
             throw new ValidationException("radius required for Circle");
         }
@@ -34,10 +19,7 @@ public class ShapeCalculatorValidator {
         }
     }
 
-    private void checkFieldsForRectangle(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.RECTANGLE.name())) {
-            checkFieldsForSquare(requestDTO);
-        }
+    public void validateForRectangle(RectangleRequestDTO requestDTO) {
         if (requestDTO.getWidth() == null) {
             throw new ValidationException("width required for Rectangle");
         }
@@ -52,10 +34,7 @@ public class ShapeCalculatorValidator {
         }
     }
 
-    private void checkFieldsForSquare(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.SQUARE.name())) {
-            checkFieldsForTriangle(requestDTO);
-        }
+    public void validateForSquare(SquareRequestDTO requestDTO) {
         if (requestDTO.getSide() == null) {
             throw new ValidationException("side required for Square");
         }
@@ -64,10 +43,7 @@ public class ShapeCalculatorValidator {
         }
     }
 
-    private void checkFieldsForTriangle(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.TRIANGLE.name())) {
-            checkFieldsForCube(requestDTO);
-        }
+    public void validateForTriangle(TriangleRequestDTO requestDTO) {
         if (requestDTO.getA() == null) {
             throw new ValidationException("a required for Triangle");
         }
@@ -90,7 +66,7 @@ public class ShapeCalculatorValidator {
         checkTriangleCorrect(requestDTO);
     }
 
-    private void checkTriangleCorrect(ShapeRequestDTO requestDTO) {
+    private void checkTriangleCorrect(TriangleRequestDTO requestDTO) {
         double a = requestDTO.getA();
         double b = requestDTO.getB();
         double c = requestDTO.getC();
@@ -100,10 +76,7 @@ public class ShapeCalculatorValidator {
         }
     }
 
-    private void checkFieldsForCube(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.CUBE.name())) {
-            checkFieldsForParallelepiped(requestDTO);
-        }
+    public void validateForCube(CubeRequestDTO requestDTO) {
         if (requestDTO.getSide() == null) {
             throw new ValidationException("side required for Cube");
         }
@@ -112,10 +85,7 @@ public class ShapeCalculatorValidator {
         }
     }
 
-    private void checkFieldsForParallelepiped(ShapeRequestDTO requestDTO) {
-        if (!requestDTO.getShapeCode().equals(EShape.PARALLELEPIPED.name())) {
-            throw new ValidationException("Shape not acceptable");
-        }
+    public void validateForParallelepiped(ParallelepipedRequestDTO requestDTO) {
         if (requestDTO.getWidth() == null) {
             throw new ValidationException("width required for Parallelepiped");
         }
@@ -136,5 +106,4 @@ public class ShapeCalculatorValidator {
             throw new ValidationException("length cannot be negative or zero for Parallelepiped");
         }
     }
-
 }

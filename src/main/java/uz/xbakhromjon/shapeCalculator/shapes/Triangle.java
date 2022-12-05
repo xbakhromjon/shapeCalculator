@@ -3,13 +3,14 @@ package uz.xbakhromjon.shapeCalculator.shapes;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import uz.xbakhromjon.shapeCalculator.shapes.base.TwoDimensionalShape;
 
 import java.math.BigDecimal;
 
 @Setter
 @Getter
 @AllArgsConstructor
-public class Triangle implements Base2DShape {
+public class Triangle implements TwoDimensionalShape {
     private Double a;
     private Double b;
     private Double c;

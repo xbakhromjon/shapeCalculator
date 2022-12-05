@@ -3,11 +3,13 @@ package uz.xbakhromjon.shapeCalculator.shapes;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import uz.xbakhromjon.shapeCalculator.shapes.base.ThreeDimensionalShape;
+import uz.xbakhromjon.shapeCalculator.shapes.base.TwoDimensionalShape;
 
 @Setter
 @Getter
 @AllArgsConstructor
-public class Cube implements ThreeDimensionalShape,  Base2DShape {
+public class Cube implements ThreeDimensionalShape, TwoDimensionalShape {
     private Double side;
 
     @Override

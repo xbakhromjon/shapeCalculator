@@ -12,24 +12,8 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShapeRequestDTO {
-    private String shapeCode;
-    // circle
-    private Double radius;
-
-    // rectangle
+public class ParallelepipedRequestDTO {
     private Double width;
     private Double height;
-
-    // square, cube
-    private Double side;
-
-    // triangle
-    private Double a;
-    private Double b;
-    private Double c;
-
-    // parallelepiped
-    // width, height above.
     private Double length;
 }
