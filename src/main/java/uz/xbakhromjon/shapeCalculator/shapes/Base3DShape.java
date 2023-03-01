@@ -2,10 +2,7 @@ package uz.xbakhromjon.shapeCalculator.shapes;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public interface Base2DShape {
+public interface Base3DShape extends Base2DShape {
     @JsonIgnore
-    Double getArea();
-
-    @JsonIgnore
-    Double getPerimeter();
+    Double getVolume();
 }
