@@ -3,7 +3,6 @@ package uz.xbakhromjon.shapeCalculator.configuration;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.servers.Server;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +19,7 @@ import org.springframework.web.servlet.resource.WebJarsResourceResolver;
                 contact = @Contact(
                         name = "ProDevs", email = "xbakhromjon@gmail.com", url = "https://www.xbakhromjon.uz"
                 )
-        ),
-        servers = @Server(url = "http://localhost:8080/api"))
+        ))
 public class OpenAPIConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
