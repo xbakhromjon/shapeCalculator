@@ -9,5 +9,4 @@ public class ShapeCalculatorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ShapeCalculatorApplication.class, args);
 	}
-
 }
